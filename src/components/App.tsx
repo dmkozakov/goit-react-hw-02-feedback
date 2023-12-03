@@ -4,15 +4,19 @@ import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
 
+type Index = {
+  [key: string]: string;
+};
+
 class App extends Component {
   state = {
-    good: 0,
+    good: 0, 
     neutral: 0,
     bad: 0,
   };
 
-  onLeaveFeedback = key => {
-    this.setState(prevState => ({ [key]: prevState[key] + 1 }));
+  onLeaveFeedback = (key: string) => {
+    this.setState((prevState: Index) => ({ [key]: prevState[key] + 1 }));
   };
 
   countTotalFeedback = () => {
